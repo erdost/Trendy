@@ -1,0 +1,17 @@
+﻿@model Trendy.Models.IndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@foreach (ProductViewModel product in Model.Products)
+{
+    <div>@product.Id - @product.Name - @product.LastUpdatedTime</div>
+}
+
+@if (Model.PageIndex > 0)
+{
+    @Html.ActionLink("Previous", "Index", "Home", new { pageIndex = @Model.PageIndex - 1 }, null)
+}
+
+@Html.ActionLink("Next", "Index", "Home", new { pageIndex = @Model.PageIndex + 1 }, null)
+
